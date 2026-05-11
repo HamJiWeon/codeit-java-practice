@@ -14,27 +14,52 @@ public abstract class LearningActivity {
     }
 
     public LearningActivity(String title, int minutes, boolean publicActivity) {
-        this.id = ++totalCreateCount;
-        this.title = validateTitle(title);
+        totalCreateCount++;
+        this.id = totalCreateCount;
+        this.title = normalizeTitle(title);
         this.minutes = minutes;
         this.publicActivity = publicActivity;
     }
 
-    public void extendsStudy(int minutes) {
-        if (minutes <= 0) {
-            System.out.println("InvalidParameterException: Negative values are not allowed for this operation.");
+    public void extendStudy(int additionalMinutes) {
+        if (additionalMinutes <= 0) {
+            System.out.println("잘못된 공부 시간입니다.");
             return;
         }
 
-        this.minutes += minutes;
+        this.minutes += additionalMinutes;
+    }
+
+    public void changeTitle(String newTitle) {
+        this.title = normalizeTitle(newTitle);
+    }
+
+    private String normalizeTitle(String newTitle) {
+        if (newTitle == null || newTitle.isBlank()) {
+            return "제목 없음";
+        }
+
+        return newTitle;
+    }
+
+    public void openToPublic() {
+        this.publicActivity = true;
+    }
+
+    public void hideFromPublic() {
+        this.publicActivity = false;
+    }
+
+
+    public abstract String getActivityType();
+    public abstract String getDetailText();
+
+    public static int getTotalCreateCount() {
+        return totalCreateCount;
     }
 
     public long getId() {
         return id;
-    }
-
-    public static int getTotalCreateCount() {
-        return totalCreateCount;
     }
 
     public String getTitle() {
@@ -45,29 +70,11 @@ public abstract class LearningActivity {
         return minutes;
     }
 
-    public boolean isPublicActivity() {
+    public boolean ispublicActivity() {
         return publicActivity;
     }
 
-    public abstract void printSummary();
-
-    public void changeTitle(String newTitle) {
-        this.title = validateTitle(newTitle);;
-    }
-
-    private String validateTitle(String newTitle) {
-        if (newTitle == null || newTitle.isBlank()) {
-            return "NullPointerException";
-        }
-
-        return newTitle;
-    }
-
-    public void openPublic() {
-        this.publicActivity = true;
-    }
-
-    public void closePublic() {
-        this.publicActivity = false;
+    public String getVisibilityText() {
+        return publicActivity ? "공개" : "비공개";
     }
 }

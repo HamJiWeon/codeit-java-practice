@@ -5,25 +5,11 @@ import oop.abstract_interface.policy.Shareable;
 
 public class LectureLog extends LearningActivity implements Reviewable, Shareable {
 
-    private String instructorName;
+    public String instructorName;
 
     public LectureLog(String title, int minutes, boolean publicActivity, String instructorName) {
         super(title, minutes, publicActivity);
-        this.instructorName = validateInstructorName(instructorName);
-    }
-
-    public String getInstructorName() {
-        return instructorName;
-    }
-
-    public void setInstructorName(String instructorName) {
-        this.instructorName = instructorName;
-    }
-
-    @Override
-    public void printSummary() {
-        System.out.println("[강의] #" + getId() + ". " + getTitle() + " - " + getMinutes()
-                + "분 강사: " + instructorName);
+        this.instructorName = normalizeInstructorName(instructorName);
     }
 
     @Override
@@ -33,12 +19,12 @@ public class LectureLog extends LearningActivity implements Reviewable, Shareabl
 
     @Override
     public void printReviewTarget() {
-        printSummary();
+        System.out.println("[복습 권장] " + getTitle() + " (" + getMinutes() + "분)");
     }
 
-    private String validateInstructorName(String instructorName) {
+    private String normalizeInstructorName(String instructorName) {
         if (instructorName == null || instructorName.isBlank()) {
-            return "NullPointerException";
+            return "강사 미정";
         }
 
         return instructorName;
@@ -46,11 +32,21 @@ public class LectureLog extends LearningActivity implements Reviewable, Shareabl
 
     @Override
     public boolean canShare() {
-        return isPublicActivity();
+        return ispublicActivity();
     }
 
     @Override
     public String getShareTitle() {
         return getTitle();
+    }
+
+    @Override
+    public String getActivityType() {
+        return "강의";
+    }
+
+    @Override
+    public String getDetailText() {
+        return "강사: " + instructorName;
     }
 }

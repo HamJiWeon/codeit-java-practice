@@ -6,6 +6,9 @@ import oop.abstract_interface.domain.PracticeLog;
 import oop.abstract_interface.domain.ReadingLog;
 import oop.abstract_interface.policy.Reviewable;
 import oop.abstract_interface.policy.Shareable;
+import oop.abstract_interface.printer.ActivityPrinter;
+import oop.abstract_interface.printer.CompactActivityPrinter;
+import oop.abstract_interface.printer.ConsoleActivityPrinter;
 
 public class SprintLogApp {
 
@@ -17,25 +20,30 @@ public class SprintLogApp {
         ReadingLog oopBook = new ReadingLog("객체지향의 사실과 오해", 35, true, "객체지향의 사실과 오해");
 
         LearningActivity[] activities = {javaLecture, gitPractice, oopPractice, oopBook};
+        ActivityPrinter printer = new CompactActivityPrinter();
 
-        System.out.println("=== 학습 활동 목록 ===");
-
+        System.out.println("=== 간단 학습 활동 목록 ===");
         for (int i = 0; i < activities.length; i++) {
-            activities[i].printSummary();
+            printer.print(activities[i]);
         }
 
-        Reviewable[] reviews = {javaLecture, gitPractice, oopPractice, oopBook};
+        Reviewable[] reviewables = {javaLecture, gitPractice, oopPractice, oopBook};
         System.out.println();
         System.out.println("=== 복습 필요 활동 ===");
-        for (Reviewable review : reviews) {
-            if (review.needsReview()) review.printReviewTarget();
+        for (Reviewable reviewable : reviewables) {
+            if (reviewable.needsReview()) {
+                reviewable.printReviewTarget();
+            }
         }
 
-        Shareable[] shares = {javaLecture, gitPractice, oopPractice, oopBook};
+        Shareable[] shareables = {javaLecture, gitPractice, oopPractice, oopBook};
+
         System.out.println();
-        System.out.println("=== 공유 필요 활동 ===");
-        for (Shareable share : shares) {
-            if (share.canShare()) System.out.println(share.getShareTitle());
+        System.out.println("=== 공유 가능한 활동 ===");
+        for (Shareable shareable : shareables) {
+            if (shareable.canShare()) {
+                System.out.println(shareable.getShareTitle());
+            }
         }
     }
 }
