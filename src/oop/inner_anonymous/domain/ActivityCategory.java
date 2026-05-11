@@ -1,4 +1,4 @@
-package oop.enum_exception.domain;
+package oop.inner_anonymous.domain;
 
 public enum ActivityCategory {
 

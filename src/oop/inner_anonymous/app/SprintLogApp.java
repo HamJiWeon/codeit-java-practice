@@ -1,13 +1,13 @@
-package oop.enum_exception.app;
+package oop.inner_anonymous.app;
 
-import oop.enum_exception.domain.*;
+import oop.inner_anonymous.domain.*;
 import oop.enum_exception.exception.InvalidActivityException;
-import oop.enum_exception.printer.ActivityPrinter;
-import oop.enum_exception.printer.ConsoleActivityPrinter;
+import oop.inner_anonymous.printer.ActivityPrinter;
+import oop.inner_anonymous.printer.ConsoleActivityPrinter;
 
-import static oop.enum_exception.domain.ActivityCategory.*;
-import static oop.enum_exception.domain.Visibility.PRIVATE;
-import static oop.enum_exception.domain.Visibility.PUBLIC;
+import static oop.inner_anonymous.domain.ActivityCategory.*;
+import static oop.inner_anonymous.domain.Visibility.PRIVATE;
+import static oop.inner_anonymous.domain.Visibility.PUBLIC;
 
 public class SprintLogApp {
 

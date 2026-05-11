@@ -1,9 +1,9 @@
-package oop.enum_exception.domain;
+package oop.inner_anonymous.domain;
 
 import oop.enum_exception.exception.InvalidActivityException;
 
-import static oop.enum_exception.domain.Visibility.*;
-import static oop.enum_exception.domain.Visibility.PRIVATE;
+import static oop.inner_anonymous.domain.Visibility.*;
+import static oop.inner_anonymous.domain.Visibility.PRIVATE;
 
 public abstract class LearningActivity {
 

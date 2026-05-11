@@ -1,6 +1,6 @@
-package oop.enum_exception.printer;
+package oop.inner_anonymous.printer;
 
-import oop.enum_exception.domain.LearningActivity;
+import oop.inner_anonymous.domain.LearningActivity;
 
 public class CompactActivityPrinter implements ActivityPrinter {
 

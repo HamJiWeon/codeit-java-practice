@@ -1,9 +1,9 @@
-package oop.enum_exception.domain;
+package oop.inner_anonymous.domain;
 
-import oop.enum_exception.policy.Reviewable;
-import oop.enum_exception.policy.Shareable;
+import oop.inner_anonymous.policy.Reviewable;
+import oop.inner_anonymous.policy.Shareable;
 
-import static oop.enum_exception.domain.ActivityCategory.PRACTICE;
+import static oop.inner_anonymous.domain.ActivityCategory.PRACTICE;
 
 public class PracticeLog extends LearningActivity implements Reviewable, Shareable {
 

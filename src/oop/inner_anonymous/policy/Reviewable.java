@@ -1,4 +1,4 @@
-package oop.enum_exception.policy;
+package oop.inner_anonymous.policy;
 
 public interface Reviewable {
 
