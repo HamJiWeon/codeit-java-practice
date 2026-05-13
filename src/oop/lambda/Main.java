@@ -68,12 +68,29 @@ public class Main {
             System.out.println(apple);
         }
 
+        System.out.println();
+        System.out.println("========================================");
+
         // 빨강 혹은 초록, 150 미만
         List<Apple> appleList = FilterApple.filterApple(appleBasket,
-                a -> a.getWeight() < 200 && (a.getColor() == RED || a.getColor() == GREEN));
+                a -> a.getWeight() > 150 && (a.getColor() == RED || a.getColor() == GREEN));
 
         for (Apple apple : appleList) {
             System.out.println(apple);
         }
+
+        System.out.println();
+        System.out.println("========================================");
+
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        List<Integer> filter1 = FilterApple.filter(numbers, n -> n % 2 == 0);
+
+        System.out.println("filter1 = " + filter1);
+
+        List<String> foods = List.of("짜장면", "짬뽕", "탕수육", "피자", "삼겹살", "파스타");
+        List<String> filter2 = FilterApple.filter(foods, f -> f.length() == 3);
+
+        System.out.println("filter2 = " + filter2);
+
     }
 }
