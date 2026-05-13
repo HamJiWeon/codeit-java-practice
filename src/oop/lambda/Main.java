@@ -92,5 +92,19 @@ public class Main {
 
         System.out.println("filter2 = " + filter2);
 
+        System.out.println();
+        System.out.println("========================================");
+
+        List<Color> colorList = MappingApple.mappingAppleByColor(appleBasket);
+        System.out.println(colorList);
+
+        List<Integer> map1 = MappingApple.map(appleBasket, apple -> apple.getWeight());
+        System.out.println("map1 = " + map1) ;
+
+        List<Integer> map2 = MappingApple.map(numbers, i -> (int) Math.pow(i, 2));
+        System.out.println("map2 = " + map2);
+
+        List<Character> map3 = MappingApple.map(foods, food -> food.charAt(0));
+        System.out.println("map3 = " + map3);
     }
 }
